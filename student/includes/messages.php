@@ -4,6 +4,15 @@
 
 	if(isset($_POST['send'])){
 		$output = '';
+		echo ' <div class="breadcrumbs">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Send Message to Libarian</h1>
+                    </div>
+                </div>
+            </div>
+        </div>';
 
 		$output.='
 		<div class="col-lg-2"></div>
@@ -51,15 +60,15 @@
 
 		if(empty($subject) && empty($msgbox)){
 			echo '
-				<div class="alert alert-warning">
+				<div class="alert alert-danger">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 Please Fill Neccessary Requirement
               </div>
 			';
 		}else{
 			
-				$sql2 = "INSERT INTO studentmessages (matricno, subject, message, reply, status, timesent)
-						VALUES('$matricno', '$subject', '$msgbox', '', '0', '$timesent')";
+				$sql2 = "INSERT INTO messages (sender, title, message, status, timesent)
+						VALUES('$matricno', '$subject', '$msgbox', '0', '$timesent')";
 				$query2 = $connection->query($sql2);
 				if($query2){
 					echo '

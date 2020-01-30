@@ -12,6 +12,7 @@
     <link rel="apple-touch-icon" href="apple-icon.png">
 
     <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link href="vendors/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
     <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css">
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
@@ -25,22 +26,18 @@
 
 </head>
 
-<body>
+<body style="background: black; color: white;">
 
-
-    <!-- Left Panel -->
-
-    <aside id="left-panel" class="left-panel">
-        <nav class="navbar navbar-expand-sm navbar-default">
+    <aside id="left-panel" class="left-panel" style="background: #1b2a47; color: white;">
+        <nav class="navbar navbar-expand-sm navbar-default" style="background: #1b2a47; color: white;">
 
             <div class="navbar-header">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="./"><img src="images/lasu.jpeg" alt="Logo" width="100" height="100"></a>
-                <a class="navbar-brand hidden" href="./"><img src="images/lasu.jpeg" alt="Logo"></a>
+                <a class="navbar-brand" href="./"><img src="images/lasu.png" alt="Logo" height="100" width="100"></a>
+                <a class="navbar-brand hidden" href="./"><img src="images/lasu.png" alt="Logo"></a>
             </div>
-
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
@@ -49,7 +46,7 @@
                     
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-user"></i>Students</a>
-                        <ul class="sub-menu children dropdown-menu">
+                        <ul class="sub-menu children dropdown-menu"  style="background: #1b2a47; color: white;">
                             <li>
                                 <i class="fa fa-user"></i><a href="#" id="approvestds">Approved Students</a>
                             </li>
@@ -61,32 +58,32 @@
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Books</a>
-                        <ul class="sub-menu children dropdown-menu">
+                        <ul class="sub-menu children dropdown-menu" style="background: #1b2a47; color: white;">
                             <li><i class="fa fa-table"></i><a href="#" id="addbook">Add Book</a></li>
                             <li><i class="fa fa-table"></i><a href="#" id="managebook">Manage Books</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Issued Books</a>
-                        <ul class="sub-menu children dropdown-menu">
+                        <ul class="sub-menu children dropdown-menu" style="background: #1b2a47; color: white;">
                             <li><i class="menu-icon fa fa-th"></i><a href="#" id="issueBook">Issue Book</a></li>
                             <li><i class="menu-icon fa fa-th"></i><a href="#" id="returnedBook">Returned Books</a></li>
                         </ul>
                     </li>
+                     <li>
+                        <a href="#" id="bookrequest"><i class="menu-icon fa fa-book"></i>Book Requests </a>
+                    </li>
                     <li>
-                        <a href="#" id="viewallissued"><i class="menu-icon fa fa-eye"></i>View all Issued Books </a>
+                        <a href="#" id="sendmsg"><i class="menu-icon fa fa-inbox"></i>Compose Message </a>
+                    </li>
+
+                     <li>
+                        <a href="#" id="notification" class="notification"><i class="menu-icon fa fa-bell"></i>Notification <span class="badge badge-danger notify">9</span></a>
                     </li>
                     
-                    
-                    <li>
-                        <a href="#" id="sendmsg"><i class="menu-icon fa fa-envelope"></i>Send Message </a>
-                    </li>
-                    <li>
-                        <a href="#" id="notification"> <i class="menu-icon fa fa-bell"></i>Notifications <span class="badge badge-danger notify">0</span></a>
-                    </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cog"></i>Settings</a>
-                        <ul class="sub-menu children dropdown-menu">
+                        <ul class="sub-menu children dropdown-menu"  style="background: #1b2a47; color: white;">
                             
                             <li><i class="menu-icon fa fa-pencil"></i><a href="#" id="changepassword">Change Password</a></li>
                         </ul>
@@ -96,7 +93,8 @@
                     </li>
                     
                 </ul>
-            </div><!-- /.navbar-collapse -->
+            </div>
+            <!-- /.navbar-collapse -->
         </nav>
     </aside><!-- /#left-panel -->
 
@@ -104,17 +102,17 @@
 
     <!-- Right Panel -->
 
-    <div id="right-panel" class="right-panel">
+    <div id="right-panel" class="right-panel" style="background: #152036; color:white;">
 
         <!-- Header-->
-        <header id="header" class="header">
+        <header id="header" class="header" style="background: #1b2a47; color: white;">
 
             <div class="header-menu">
 
                 <div class="col-sm-7">
                     <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
                     <div class="header-left">
-                        <button class="search-trigger"><i class="fa fa-search"></i></button>
+                        <button class="search-trigger" style="color:white;"><i class="fa fa-search"></i></button>
                         <div class="form-inline">
                             <form class="search-form" method="POST" action="#">
                                 <input class="form-control mr-sm-2" type="text" id="keywords" placeholder="Search ..." aria-label="Search">
@@ -123,9 +121,9 @@
                         </div>
 
                         <div class="dropdown for-notification">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn btn-secondary dropdown-toggle notification" type="button" id="notification" style="color:white;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-bell"></i>
-                                <span class="count bg-danger">0</span>
+                                <span class="count bg-danger notify">0</span>
                             </button>
                             
                         </div>
@@ -140,24 +138,47 @@
         </header><!-- /header -->
         <!-- Header-->
 
-        <div class="breadcrumbs">
-            <div class="col-sm-4">
-                <div class="page-header float-left">
-                    <div class="page-title">
-                        <h1>Dashboard</h1>
+        <!-- Modal -->
+                    <div class='modal fade' id='exampleModal' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                      <div class='modal-dialog' role='document'>
+                        <div class='modal-content' style="background: #1b2a47; color: white;">
+                          <div class='modal-header'>
+                            <h5 class='modal-title' id='exampleModalLabel'>Book Details</h5>
+                            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                              <span aria-hidden='true'>&times;</span>
+                            </button>
+                          </div>
+                          <div class='modal-body' id="showbookdetails" style="background: #1b2a47; color: white;">
+                            
+                          </div>
+                          <div class='modal-footer'>
+                            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
+                            
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-sm-8">
-                <div class="page-header float-right">
-                    <div class="page-title">
-                        <ol class="breadcrumb text-right">
-                            <li class="active">Dashboard</li>
-                        </ol>
+
+                     <!-- Modal -->
+                    <div class='modal fade' id='exampleModal2' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                      <div class='modal-dialog' role='document'>
+                        <div class='modal-content' style="background: #1b2a47; color: white;">
+                          <div class='modal-header'>
+                            <h5 class='modal-title' id='exampleModalLabel'>Student Details</h5>
+                            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                              <span aria-hidden='true'>&times;</span>
+                            </button>
+                          </div>
+                          <div class='modal-body' id="showstudentdetails" style="background: #1b2a47; color: white;">
+                            
+                          </div>
+                          <div class='modal-footer'>
+                            <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
+                            
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                </div>
-            </div>
-        </div>
 
         <div class="content mt-3">
            
@@ -170,7 +191,9 @@
     <!-- Right Panel -->
 
     <script src="vendors/jquery/dist/jquery.min.js"></script>
-    <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="vendors/bootstrap-4.1/popper.min.js"></script>
+    <script src="vendors/bootstrap-4.1/bootstrap.min.js"></script>
+    
     <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="vendors/chosen/chosen.jquery.min.js"></script>
@@ -282,7 +305,12 @@
             var approvestds = $('#approvestds');
             approvestds.on('click', function(e){
                 e.preventDefault();
-                $.ajax({
+                approvestudents();
+               
+            });
+
+            function approvestudents() {
+                 $.ajax({
                     url: 'includes/students.php',
                     method: 'POST',
                     data: {approvestd: 1},
@@ -290,7 +318,8 @@
                         $('#dashboard').html(data);
                     }
                 })
-            })
+            }
+
 
             var notapprovedstds = $('#notapprovedstds');
             notapprovedstds.on('click', function(e){
@@ -310,6 +339,10 @@
             $('#addbook').on('click', function(e){
                 e.preventDefault();
                
+                addbook();
+            })
+
+            function addbook(){
                 $.ajax({
                     url: 'includes/books.php',
                     method: 'POST',
@@ -318,13 +351,45 @@
                         $('#dashboard').html(data);
                     }
                 })
-
-            })
+            }
 
             $('body').delegate('#addBtn', 'click', function(e){
                 e.preventDefault();
+
+
+                var fdata = new FormData();
+                fdata.append("bookname", $("#bookname").val());
+                fdata.append("bookcategory", $("#bookcategory").val());
+                fdata.append("bookauthorname", $("#bookauthorname").val());
+                fdata.append("publicationdate", $("#publicationdate").val());
+                fdata.append("purchasedate", $("#purchasedate").val());
+                fdata.append("bookqty", $("#bookqty").val());
+                fdata.append("availableqty", $("#availableqty").val());
                 
-                var fdata = $('#addBook').serialize();
+                if($("#file")[0].files.length > 0)
+                    fdata.append('file', $("#file")[0].files[0])
+                    console.log(fdata);
+                $.ajax({
+                    url: 'includes/books.php',
+                    method: 'POST',
+                    data: fdata,
+                    contentType: false,
+                    processData: false,
+                    success: function(data){
+                        $('#alert').html(data);
+                            
+                            $('#bookname').val("");
+                            $('#bookcategory').val("");
+                            $('#bookauthorname').val("");
+                            $('#publicationdate').val("");
+                            $('#purchasedate').val("");
+                            $('#bookqty').val("");
+                            $('#availableqty').val("");
+                            
+                    }
+                })
+                
+                /*var fdata = $('#addBook').serialize();
 
                     $.ajax({
                         url: 'includes/books.php',
@@ -343,12 +408,17 @@
                             $('#availableqty').val("");
                             
                         }
-                    })
+                    })*/
                 });
 
             $('#managebook').on('click', function(e){
                 e.preventDefault();
 
+                managebook();
+                
+            })
+
+            function managebook(){
                 $.ajax({
                         url: 'includes/books.php',
                         method: 'POST',
@@ -358,32 +428,66 @@
                             
                         }
                     })
-            })
+            }
 
-            $('body').delegate('#view', 'click', function(e){
+            $('body').delegate('#viewbookdetails', 'click', function(e){
                 e.preventDefault();
-                var sid = $(this).attr('pid');
+                var pid = $(this).attr('pid');
+                alert(pid);
                 
                 $.ajax({
                     url: 'includes/books.php',
                     method: 'POST',
-                    data: {view:1, sid:sid},
+                    data: {viewbook:1, pid:pid},
                     success: function(data){
-                        $('#dashboard').html(data);
+                        $('#showbookdetails').html(data);
+                    }
+                });
+            })
+
+            $('body').delegate('#viewstudent', 'click', function(e){
+                e.preventDefault();
+                var pid = $(this).attr('pid');
+               // alert(pid);
+                
+                $.ajax({
+                    url: 'includes/students.php',
+                    method: 'POST',
+                    data: {viewstudent:1, pid:pid},
+                    success: function(data){
+                        $('#showstudentdetails').html(data);
+                    }
+                });
+            })
+
+             $('body').delegate('#deletestudent', 'click', function(e){
+                e.preventDefault();
+               // alert(1);
+                var pid = $(this).attr('pid');
+               
+                $.ajax({
+                    url: 'includes/students.php',
+                    method: 'POST',
+                    data: {deletestudent:1, pid:pid},
+                    success: function(data){
+                        alert(data);
+                       // managebook();
+                       approvestudents();
                     }
                 })
             })
 
-            $('body').delegate('#delete', 'click', function(e){
+            $('body').delegate('#deletebook', 'click', function(e){
                 e.preventDefault();
-                var sid = $(this).attr('pid');
+                var pid = $(this).attr('pid');
                
                 $.ajax({
                     url: 'includes/books.php',
                     method: 'POST',
-                    data: {delete:1, sid:sid},
+                    data: {deletebook:1, pid:pid},
                     success: function(data){
-                        $('#').html(data);
+                        alert(data);
+                        managebook();
                     }
                 })
             })
@@ -487,9 +591,7 @@
                 })
             })
 
-            $('#viewallissued').click(function(e){
-                e.preventDefault();
-
+            function bookrequest(){
                 $.ajax({
                     url: 'includes/books.php',
                     method: 'POST',
@@ -498,7 +600,32 @@
                         $('#dashboard').html(data);
                     }
                 })
+            }
+
+            $('#bookrequest').click(function(e){
+                e.preventDefault();
+
+                bookrequest();
+                
             })
+
+            $('body').delegate('#issuerequest', 'click', function(e){
+                e.preventDefault();
+                var bid = $(this).attr('bid');
+
+                $.ajax({
+                    url: 'includes/books.php',
+                    method: 'POST',
+                    data: {issuerequest: 1, bid:bid},
+                    success: function(data){
+                        $('#requestalert').html(data);
+                        bookrequest();
+                    }
+                })
+
+            });
+
+
 
             $('#logout').click(function(e){
                 e.preventDefault();
@@ -540,9 +667,13 @@
                 })
             })
 
-            $('#notification').click(function(e){
+            $('.notification').click(function(e){
                 e.preventDefault();
-                $.ajax({
+               notification();
+            })
+
+            function notification(){
+                 $.ajax({
                     url: 'includes/notification.php',
                     method: 'POST',
                     data: {notification: 1},
@@ -551,7 +682,7 @@
                          notification_counter();
                     }
                 })
-            })
+            }
 
             function notification_counter(){
                 $.ajax({
@@ -566,16 +697,19 @@
             }
             notification_counter();
 
-            $('body').delegate('#delete', 'click', function(event){
+            $('body').delegate('#deletemessage', 'click', function(event){
                 event.preventDefault();
 
                 var mid = $(this).attr('mid');
+                alert(mid);
+
                 $.ajax({
                     url: 'includes/notification.php',
                     method: 'POST',
-                    data: {delete: 1, mid: mid},
+                    data: {deletemessage: 1, mid: mid},
                     success: function(data){
                         $('#msgstatus').html(data);
+                        notification();
                     }
                 })
             })

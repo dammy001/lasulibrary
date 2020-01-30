@@ -4,11 +4,34 @@
 
 	if(isset($_POST['dashboard'])){
 
-	$output = '';
+		$output = '';
+		
+		$output.= '
+			<div class="breadcrumbs" style="background: #1b2a47; color: white;">
+            <div class="col-sm-4">
+                <div class="page-header float-left" style="background: #1b2a47; color: white;">
+                    <div class="page-title">
+                        <h1>Dashboard</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="page-header float-right" style="background: #1b2a47; color: white;">
+                    <div class="page-title">
+                        <ol class="breadcrumb text-right"  style="background: #1b2a47; color: white;">
+                            <li class="active">Dashboard</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+		';
 
-	$output.= '
-		<div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-flat bg-dark">
+	
+
+	$output .= '
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="card text-white bg-flat" style="background: #1b2a47; color: white;">
                     <div class="card-body pb-0">
                         
                         <h4 class="mb-0">
@@ -24,10 +47,9 @@
 
                 </div>
             </div>
-            <!--/.col-->
 
-            <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-flat bg-dark">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="card text-white bg-flat" style="background: #1b2a47; color: white;">
                     <div class="card-body pb-0">
                         
                         <h4 class="mb-0">
@@ -42,10 +64,9 @@
                     </div>
                 </div>
             </div>
-            <!--/.col-->
 
-            <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-flat bg-dark">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="card text-white bg-flat" style="background: #1b2a47; color: white;">
                     <div class="card-body pb-0">
                         
                         <h4 class="mb-0">
@@ -60,10 +81,9 @@
                     </div>
                 </div>
             </div>
-            <!--/.col-->
 
-            <div class="col-sm-6 col-lg-3">
-                <div class="card text-white bg-flat bg-dark">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="card text-white bg-flat" style="background: #1b2a47; color: white;">
                     <div class="card-body pb-0">
                         
                         <h4 class="mb-0">
@@ -78,45 +98,50 @@
                     </div>
                 </div>
             </div>
-		';
+	';
 
-		$output.= '
-			<div class="col-lg-12">
-                <div class="card">
-                
-                    <div class="card-body">
-                        <div class="stat-widget-one">
-                            <div class="stat-content">
-                              <div class="stat-text"><h4>Recent Registered Students</h4></div><br>
-                              <div id="msg"></div>
-                              <table class="table table-hover table-responsive">
-                                    <thead class="thead-dark">
-                                        <tr>
+	$output.= '
+			<div class="col-md-12">
+                <div class="card" style="background: #1b2a47; color: white;">
+                	<div class="card-body">
+                		<div class="stat-widget-one">
+                			<div class="stat-content">
+                				<div id="msg"></div>
+                				<div class="stat-text">
+                					<h4 style="color: white">Recent Registered Students</h4>
+
+                				</div>
+                				<table class="table table-hover table-responsive">
+                					<thead style="background: #152036; color: white;">
+                						<tr style="background: #152036; color: white;">
                                             <th scope="col">Matric No</th>
+                                            <th scope="col">Image</th>
                                             <th scope="col">FirstName</th>
                                             <th scope="col">LastName</th>
-                                            <th scope="col">Email</th>
+                                            
                                             <th scope="col">Department</th>
                                             <th scope="col">Level</th>
                                             <th scope="col">Date</th>
                                             <th scope="col">Status</th>
+                                            <th scope="col">Approved By</th>
                                             <th scope="col"></th>
                                         </tr>
-                                    </thead>
-                                    <tbody id="tbody">
+                					</thead>
+                					<tbody id="tbody">
                                         
                                        
                                         
                                     </tbody>
-                                </table>
-
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                				</table>
+                			</div>
+                		</div>
+                	</div>
+               	</div>
             </div>
-		';
+	';
+
+	
+		
 		echo $output;
 	}
 
@@ -129,6 +154,7 @@
 			while($row = mysqli_fetch_array($query)){
 
 				$id = $row['id'];
+				$image = $row['image'];
 				$matric = $row['matricno'];
 				$firstname = $row['firstname'];
 				$lastname = $row['lastname'];
@@ -137,20 +163,19 @@
 				$level = $row['level'];
 				$date = $row['dateRegistered'];
 				$status = $row['status'];
+				$approveBy = $row['approveBy'];
 
-				
 				$output.= "
-				<tr>
-					<td>$matric</td>
-                    <td>$firstname</td>
-                    <td>$lastname</td>
-                    <td>$email</td>
-                    <td>$department</td>
-                    <td>$level</td>
-                    <td>$date</td>
-
+					<tr>
+						<td>$matric</td>
+						<td><img src='../student/images/$image' height='100' width='100'></td>
+						<td>$firstname</td>
+                    	<td>$lastname</td>
+                    	<td>$department</td>
+                    	<td>$level</td>
+                   	 	<td>$date</td>
+					
 				";
-
 				if($status == '0'){
 					$output.= "
 						<td><span class='badge badge-warning'>Not Approved</span></td>
@@ -160,13 +185,16 @@
 						<td><span class='badge badge-success'>Approved</span></td>
 					";
 				}
-
 				$output.= "
+					<td>$approveBy</td>
 					<td><button type='button' class='btn btn-success btn-sm approveStd' id='approveStd' pid='$id'>Approve Student</button>
 					</td>
 
 					</tr>
 				";
+
+				
+				
 			}
 		}
 		echo $output;
@@ -176,6 +204,7 @@
 
 	if(isset($_POST['approvedId'])){
 		$studentId = $_POST['sid'];
+		$staffNo = $_SESSION['staffNo'];
 
 		$sql = "SELECT * FROM students WHERE id='$studentId'";
 		$query = $connection->query($sql);
@@ -190,7 +219,7 @@
               </div>
 			';
 		}else{
-			$sql2 = "UPDATE students SET status='1' WHERE id='$studentId'";
+			$sql2 = "UPDATE students SET status='1', approveBy='$staffNo' WHERE id='$studentId'";
 		$query2 = $connection->query($sql2);
 		if($query2 === TRUE){
 			echo '

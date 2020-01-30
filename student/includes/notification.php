@@ -6,6 +6,16 @@
 		$matric = $_SESSION['matric'];
 		$output = '';
 
+    echo ' <div class="breadcrumbs" style="background: #1b2a47; color: white;">
+            <div class="col-sm-4">
+                <div class="page-header float-left" style="background: #1b2a47; color: white;">
+                    <div class="page-title">
+                        <h1>Notification</h1>
+                    </div>
+                </div>
+            </div>
+        </div>';
+
     $sql2 = "UPDATE messages SET status='1' WHERE student_matricno='$matric'";
     $query2 = $connection->query($sql2);
 
@@ -25,25 +35,45 @@
                               			<th>Message</th>
                               			<th>Time</th>
                                     <th></th>
+                                    <th></th>
                               		</thead>
-                              		<tbody>
+                              		
                              
                 ';
 
-                $sql = "SELECT * FROM messages WHERE student_matricno='$matric'";
+                $sql = "SELECT * FROM messages WHERE sender!='$matric'";
                 $query = $connection->query($sql);
                 if($query->num_rows > 0){
                 	while($rows = mysqli_fetch_array($query)){
-                		$from = $rows['admin_username'];
+                		$from = $rows['sender'];
                 		$title = $rows['title'];
                 		$message = $rows['message'];
                 		$time = $rows['timesent'];
 
-                		$output.= "
+                    $output.= "
+                    <tbody>
+                    ";
+
+
+                		$output.="
                 			<td>$from</td>
                 			<td>$title</td>
                 			<td>$message</td>
                 			<td>$time</td>
+                      ";
+
+                     
+                        if($from != $_SESSION['matric']){
+                        $output.="
+                          <td><span class='badge badge-success'>Recieved</span></td>
+                        ";
+                      }else{
+                        $output.="
+                          <td><span class='badge badge-warning'>Sent</span></td>
+                        ";
+                      }
+                      
+                      $output.="
                       <td>
                         <button class='btn btn-light btn-sm' name='reply' id='reply'><i class='fa fa-reply'></i></button>
                         <button class='btn btn-light btn-sm' name='delete' id='delete'><i class='fa fa-trash'></i></button>
@@ -67,7 +97,7 @@
 
 	if(isset($_POST['counter'])){
 		$matric = $_SESSION['matric'];
-		$sql = "SELECT * FROM messages WHERE student_matricno='$matric' AND status='0'";
+		$sql = "SELECT * FROM messages WHERE sender!='$matric' AND status='0'";
 		$query = $connection->query($sql);
 		$count = mysqli_num_rows($query);
 		if($count){

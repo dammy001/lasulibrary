@@ -48,14 +48,18 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="dashboard.php"><img src="images/lasu.jpeg" alt="Logo" height="100" width="100"></a>
-                <a class="navbar-brand hidden" href="dashboard.php"><img src="images/lasu.jpeg" alt="Logo"></a>
+                <a class="navbar-brand" href="dashboard.php"><img src="images/lasu.png" alt="Logo" height="100" width="100"></a>
+                <a class="navbar-brand hidden" href="dashboard.php"><img src="images/lasu.png" alt="Logo"></a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
                         <a href="dashboard.php"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                    </li>
+
+                     <li>
+                        <a href="#" id="books"> <i class="menu-icon fa fa-book"></i>Books</a>
                     </li>
                     
                     <li>
@@ -126,25 +130,6 @@
         </header><!-- /header -->
         <!-- Header-->
 
-        <div class="breadcrumbs">
-            <div class="col-sm-4">
-                <div class="page-header float-left">
-                    <div class="page-title">
-                        <h1>Dashboard</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-8">
-                <div class="page-header float-right">
-                    <div class="page-title">
-                        <ol class="breadcrumb text-right">
-                            <li class="active">Dashboard</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="content mt-3">
 
             <div id="dashboard"></div>
@@ -194,12 +179,57 @@
                         }
                     })
                 }
+            });
+
+            $('#books').on('click', function(e){
+                e.preventDefault();
+
+                managebook();
+                
             })
 
-            $('#issuedbook').on('click', function(e){
+            function managebook(){
+                $.ajax({
+                        url: 'includes/books.php',
+                        method: 'POST',
+                        data: {managebook: 1},
+                        success: function(data){
+                            $('#dashboard').html(data);
+                            
+                        }
+                    })
+            }
+
+            $('body').delegate('#viewbookdetails', 'click', function(e){
                 e.preventDefault();
+                var pid = $(this).attr('pid');
+                
                 
                 $.ajax({
+                    url: 'includes/books.php',
+                    method: 'POST',
+                    data: {viewbook:1, pid:pid},
+                    success: function(data){
+                        $('#dashboard').html(data);
+                    }
+                });
+            });
+
+            $('body').delegate('#borrow', 'click', function(e){
+                var pid = $(this).attr('pid');
+
+                $.ajax({
+                     url: 'includes/books.php',
+                    method: 'POST',
+                    data: {borrowbook: 1, pid:pid},
+                    success: function(data){
+                        $('#alertbook').html(data);
+                    }
+                })
+            })
+
+            function viewissuedbooks(){
+                 $.ajax({
                     url: 'includes/dashboard.php',
                     method: 'POST',
                     data: {viewissuedbook: 1},
@@ -207,7 +237,13 @@
                         $('#dashboard').html(data);
                     }
                 })
-            })
+            }
+
+            $('#issuedbook').on('click', function(e){
+                e.preventDefault();
+                
+               viewissuedbooks();
+            });
 
             $('#profile').on('click', function(e){
                 e.preventDefault();
@@ -218,6 +254,21 @@
                     data: {profile: 1},
                     success: function(data){
                         $('#dashboard').html(data);
+                    }
+                })
+            })
+
+            $('body').delegate('#returnbook', 'click', function(e){
+                e.preventDefault();
+                var bid = $(this).attr('bid');
+
+                $.ajax({
+                    url: 'includes/dashboard.php',
+                    method: 'POST',
+                    data: {returnbooks: 1, bid:bid},
+                    success: function(data){
+                        alert(data);
+                        viewissuedbooks();
                     }
                 })
             })
@@ -309,7 +360,8 @@
 
              $('body').delegate('#sendbtn', 'click', function(e){
                 e.preventDefault();
-                alert(2);
+                alert(1);
+               
                 var sendform = $('#sendform').serialize();
                 $.ajax({
                     url: 'includes/messages.php',

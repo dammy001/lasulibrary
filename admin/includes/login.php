@@ -5,12 +5,13 @@
   if(isset($_POST['submit'])){
     
     $error = '';
-    $email = validate($_POST['email']);
+    $staffNo = validate($_POST['staffNo']);
     $password = validate($_POST['password']);
+    $date = date('Y-m-d h:i:sa');
 
-     if(!empty($email) && !empty($password)){
+     if(!empty($staffNo) && !empty($password)){
 
-            $sql = "SELECT * FROM admin WHERE email='$email' AND password='$password' LIMIT 1";
+            $sql = "SELECT * FROM admin WHERE staffNo='$staffNo' AND password='$password' LIMIT 1";
             $query = mysqli_query($connection, $sql);
 
 
@@ -27,12 +28,15 @@
                 $row = mysqli_fetch_array($query);
     
                 $id = $row['id'];
-                $matric = $row['email'];
+                $staffNo = $row['staffNo'];
                 $name = $row['firstname'];
 
-                $_SESSION['email'] = $email;
+                $_SESSION['staffNo'] = $staffNo;
                 $_SESSION['id'] = $id;
                 $_SESSION['name'] = $name;
+
+                $sql2 = "UPDATE admin SET lastLogin='$date' WHERE staffNo='$staffNo'";
+                $query2 = $connection->query($sql2);
 
           $error.= '
             <div class="alert alert-success">

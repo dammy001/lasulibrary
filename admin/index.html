@@ -25,24 +25,23 @@
 
 </head>
 
-<body class="bg-dark">
+<body style="background-image: url('../images/library2.jpg'); background-position: center center; background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
 
-
-    <div class="sufee-login d-flex align-content-center flex-wrap">
-        <div class="container">
+    <div class="sufee-login d-flex align-content-center flex-wrap" >
+        <div class="container-fluid">
             <div class="login-content">
                 <div class="login-logo">
-                    <a href="index.html">
-                        <img src="images/lasu.jpeg" alt="Logo" width="100" height="100">
-                        <h3 class="align-content">Lasu E-Library</h3>
+                    <a href="../index.html">
+                        <img src="images/lasu.png" alt="Logo" width="100" height="100">
+                        <h3 class="align-content" style="color: white;">Admin Login</h3>
                     </a>
                 </div>
                 <div class="login-form">
                     <div id="alert"></div>
                     <form method="POST" action="#">
                         <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                            <label>Staff Number</label>
+                            <input type="text" class="form-control" id="staffNo" name="staffNo" placeholder="Staff Number">
                         </div>
                             <div class="form-group">
                                 <label>Password</label>
@@ -71,15 +70,15 @@
             submit.click(function(e){
                 e.preventDefault();
                 
-                var email = $('#email').val();
+                var staffNo = $('#staffNo').val();
                 var password = $('#password').val();
 
-                if(email != '' && password != ''){
+                if(staffNo != '' && password != ''){
 
                         $.ajax({
                             url: 'includes/login.php',
                             method: 'POST',
-                            data: {submit:1, email:email, password:password},
+                            data: {submit:1, staffNo:staffNo, password:password},
                             success: function(data){
                                 $('#alert').html(data);
                             }

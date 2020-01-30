@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 4.8.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2019 at 11:42 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.4
+-- Generation Time: Nov 29, 2019 at 10:03 AM
+-- Server version: 10.1.33-MariaDB
+-- PHP Version: 7.2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -47,8 +47,8 @@ CREATE TABLE `add_books` (
 --
 
 INSERT INTO `add_books` (`id`, `bookName`, `book_image`, `book_category`, `book_author_name`, `book_publication_date`, `book_purchase_date`, `book_qty`, `available_qty`, `libarian_username`, `dateAdded`) VALUES
-(1, 'xzcldsk', '1.jpg', 'sadldsl', 'lfldsl;', '2019-12-31', '2019-12-31', '41', '26', 'admin', ''),
-(2, 'Introduction to Data Structure', '1.jpg', 'Computer Science', 'Damilare Anjorin', '2016-10-03', '2017-03-01', '10', '9', 'admin', '02-Mar-2019');
+(3, 'Introduction to SQL', 'ionic.png', 'Programming', 'S.A Aribisala', '2017-11-28', '2019-12-29', '100', '100', 'admin', '19-Oct-2019'),
+(4, 'Algorithm', 'icon.png', 'Computer Science', 'J.J. Stroud', '2019-02-06', '2019-11-04', '200', '199', 'staff001', '08-Nov-2019');
 
 -- --------------------------------------------------------
 
@@ -60,17 +60,18 @@ CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `firstname` varchar(255) NOT NULL,
   `lastname` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `staffNo` varchar(255) NOT NULL,
   `contact` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `lastLogin` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `firstname`, `lastname`, `email`, `contact`, `password`) VALUES
-(1, 'admin', 'admin', 'admin@gmail.com', '08106420637', 'admin');
+INSERT INTO `admin` (`id`, `firstname`, `lastname`, `staffNo`, `contact`, `password`, `lastLogin`) VALUES
+(1, 'Damilare', 'Anjorin', 'staff001', '08106420637', 'staff001', '2019-11-26 02:02:32pm');
 
 -- --------------------------------------------------------
 
@@ -96,15 +97,7 @@ CREATE TABLE `issue_books` (
 --
 
 INSERT INTO `issue_books` (`id`, `student_matricno`, `student_name`, `student_department`, `student_level`, `student_email`, `book_name`, `book_issue_date`, `book_return_date`, `status`) VALUES
-(1, '150591031', 'damilare damilare', 'computer science', '300', 'damilare', 'xzcldsk', '26-Feb-2019', '27-Feb-2019', '1'),
-(3, '150591031', 'damilare damilare', 'computer science', '300', 'damilare', 'xzcldsk', '27-Feb-2019', '28-Feb-2019', '1'),
-(4, '150591031', 'damilare damilare', 'computer science', '300', 'damilare', 'xzcldsk', '27-Feb-2019', '', '0'),
-(5, '150591029', 'Amos Festus', 'Computer Science', '300', 'amosfestus1@gmail.com', 'xzcldsk', '28-Feb-2019', '', '0'),
-(6, '150591029', 'Amos Festus', 'Computer Science', '300', 'amosfestus1@gmail.com', 'xzcldsk', '02-Mar-2019', '', '0'),
-(7, '150591031', 'damilare damilare', 'computer science', '300', 'damilare', 'Introduction to Data Structure', '02-Mar-2019', '', '0'),
-(8, '150591031', 'damilare damilare', 'computer science', '300', 'damilare', 'xzcldsk', '08-Mar-2019', '', '0'),
-(9, '150591031', 'damilare damilare', 'computer science', '300', 'damilare', 'xzcldsk', '08-Mar-2019', '', '0'),
-(10, '150591029', 'Amos Festus', 'Computer Science', '300', 'amosfestus1@gmail.com', 'xzcldsk', '08-Mar-2019', '', '0');
+(1, '150591031', 'damilare damilare', 'computer science', '300', 'damilare', 'Algorithm', '08-Nov-2019', '', '0');
 
 -- --------------------------------------------------------
 
@@ -127,7 +120,7 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `admin_username`, `student_matricno`, `title`, `message`, `status`, `timesent`) VALUES
-(3, 'admin', '150591031', 'dsdskk', 'kldsfkklk', '0', '08-Mar-2019 11:37:28am');
+(3, 'admin', '150591031', 'dsdskk', 'kldsfkklk', '1', '08-Mar-2019 11:37:28am');
 
 -- --------------------------------------------------------
 
@@ -144,18 +137,19 @@ CREATE TABLE `students` (
   `faculty` varchar(255) NOT NULL,
   `department` varchar(255) NOT NULL,
   `level` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
-  `dateRegistered` varchar(255) NOT NULL
+  `dateRegistered` varchar(255) NOT NULL,
+  `approveBy` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`id`, `matricno`, `firstname`, `lastname`, `email`, `faculty`, `department`, `level`, `password`, `status`, `dateRegistered`) VALUES
-(1, '150591031', 'damilare', 'damilare', 'damilare', 'Sciences', 'computer science', '300', 'damilare', '1', ''),
-(2, '150591029', 'Amos', 'Festus', 'amosfestus1@gmail.com', 'Sciences', 'Computer Science', '300', 'festus', '1', '2019-02-28');
+INSERT INTO `students` (`id`, `matricno`, `firstname`, `lastname`, `email`, `faculty`, `department`, `level`, `image`, `password`, `status`, `dateRegistered`, `approveBy`) VALUES
+(4, '150591065', 'Alimat', 'Lawal', 'lawalalimat@gmail.com', 'Sciences', 'Computer Science', '400', '56960689_2260069880738641_8666675414082519040_o.jpg', 'alimat', '1', '2019-11-22', 'staff001');
 
 --
 -- Indexes for dumped tables
@@ -199,7 +193,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `add_books`
 --
 ALTER TABLE `add_books`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -211,7 +205,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `issue_books`
 --
 ALTER TABLE `issue_books`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -223,7 +217,7 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

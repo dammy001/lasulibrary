@@ -6,6 +6,15 @@
 
 		$matric = $_SESSION['matric'];
 		$output = '';
+		echo ' <div class="breadcrumbs" style="background: #1b2a47; color: white;">
+            <div class="col-sm-4">
+                <div class="page-header float-left" style="background: #1b2a47; color: white;">
+                    <div class="page-title">
+                        <h1>Profile</h1>
+                    </div>
+                </div>
+            </div>
+        </div>';
 
 		$sql = "SELECT * FROM students WHERE matricno='$matric'";
 		$query = $connection->query($sql);

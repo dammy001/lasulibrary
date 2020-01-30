@@ -10,7 +10,7 @@ session_start();
 	session_destroy();
 
 	echo '
-		<script>window.location.href="../index.html"</script>
+		<script>window.location.href="../../index.html"</script>
 	';
 
 	}

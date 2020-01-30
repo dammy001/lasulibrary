@@ -1,6 +1,10 @@
 <?php
 	include("includes/config.php");
 	session_start();
+
+    if(!isset($_SESSION['staffNo'])){
+        echo "<script>window.location.href='index.html'</script>";
+    }
 ?>
 
 <!doctype html>
@@ -35,15 +39,15 @@
 
     <!-- Left Panel -->
 
-    <aside id="left-panel" class="left-panel">
-        <nav class="navbar navbar-expand-sm navbar-default">
+    <aside id="left-panel" class="left-panel" style="background: #1b2a47; color: white;">
+        <nav class="navbar navbar-expand-sm navbar-default" style="background: #1b2a47; color: white;">
 
             <div class="navbar-header">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" href="./"><h4>Lasu E-Library</h4></a>
-                <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a>
+                <a class="navbar-brand hidden" href="./"><img src="images/lasu.png" alt="Logo"></a>
             </div>
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -53,7 +57,7 @@
                     
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-user"></i>Students</a>
-                        <ul class="sub-menu children dropdown-menu">
+                        <ul class="sub-menu children dropdown-menu"  style="background: #1b2a47; color: white;">
                             <li>
                                 <i class="fa fa-user"></i><a href="#" id="approvestds">Approved Students</a>
                             </li>
@@ -65,14 +69,14 @@
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Books</a>
-                        <ul class="sub-menu children dropdown-menu">
+                        <ul class="sub-menu children dropdown-menu" style="background: #1b2a47; color: white;">
                             <li><i class="fa fa-table"></i><a href="#" id="addbook">Add Book</a></li>
                             <li><i class="fa fa-table"></i><a href="#" id="managebook">Manage Books</a></li>
                         </ul>
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Issued Books</a>
-                        <ul class="sub-menu children dropdown-menu">
+                        <ul class="sub-menu children dropdown-menu" style="background: #1b2a47; color: white;">
                             <li><i class="menu-icon fa fa-th"></i><a href="#" id="issueBook">Issue Book</a></li>
                             <li><i class="menu-icon fa fa-th"></i><a href="#" id="returnedBook">Returned Books</a></li>
                         </ul>
@@ -83,7 +87,7 @@
                     
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cog"></i>Settings</a>
-                        <ul class="sub-menu children dropdown-menu">
+                        <ul class="sub-menu children dropdown-menu"  style="background: #1b2a47; color: white;">
                             
                             <li><i class="menu-icon fa fa-pencil"></i><a href="#" id="changepassword">Change Password</a></li>
                         </ul>
@@ -102,66 +106,65 @@
 
     <!-- Right Panel -->
 
-    <div id="right-panel" class="right-panel">
+    <div id="right-panel" class="right-panel" style="background: #152036; color:white;">
 
         <!-- Header-->
-        <header id="header" class="header">
+        <header id="header" class="header" style="background: #1b2a47; color: white;">
 
             <div class="header-menu">
 
                 <div class="col-sm-7">
                     <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
                     <div class="header-left">
-                        <button class="search-trigger"><i class="fa fa-search"></i></button>
+                        <button class="search-trigger" style="color:white;"><i class="fa fa-search"></i></button>
                         <div class="form-inline">
-                            <form class="search-form">
-                                <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                            <form class="search-form" method="POST" action="#">
+                                <input class="form-control mr-sm-2" type="text" id="keywords" placeholder="Search ..." aria-label="Search">
                                 <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
                             </form>
                         </div>
 
                         <div class="dropdown for-notification">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" style="color:white;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-bell"></i>
-                                <span class="count bg-danger">5</span>
+                                <span class="count bg-danger">0</span>
                             </button>
                             
                         </div>
 
-                       
+                        
                     </div>
                 </div>
 
-                
+               
             </div>
 
         </header><!-- /header -->
         <!-- Header-->
 
-        <div class="breadcrumbs">
+        <div class="breadcrumbs" style="background: #1b2a47; color: white;">
             <div class="col-sm-4">
-                <div class="page-header float-left">
+                <div class="page-header float-left" style="background: #1b2a47; color: white;">
                     <div class="page-title">
                         <h1>Dashboard</h1>
                     </div>
                 </div>
             </div>
             <div class="col-sm-8">
-                <div class="page-header float-right">
+                <div class="page-header float-right" style="background: #1b2a47; color: white;">
                     <div class="page-title">
-                        <ol class="breadcrumb text-right">
+                        <ol class="breadcrumb text-right"  style="background: #1b2a47; color: white;">
                             <li class="active">Dashboard</li>
                         </ol>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="content mt-3" id="contentPage">
            <div class="row">
             <div class="col-lg-2"></div>
                 <div class="col-lg-8">
-                    <div class="card">
+                    <div class="card" style="background: #1b2a47; color: white;">
                             <div class="card-header">
                                 <strong class="card-title">Issue Book</strong>
                             </div>
@@ -185,7 +188,7 @@
                                               }
                                             ?>
                                         </select>
-                                        <button type="submit" class="btn btn-dark" id="issueBtn">Issue Book</button>
+                                        <button type="submit" class="btn btn-warning" id="issueBtn">Issue Book</button>
                                     </div>
                                 </form>
 

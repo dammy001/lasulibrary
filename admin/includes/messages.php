@@ -5,12 +5,22 @@
 	if(isset($_POST['send'])){
 		$output = '';
 
+		echo ' <div class="breadcrumbs" style="background: #1b2a47; color: white;">
+            <div class="col-sm-4">
+                <div class="page-header float-left" style="background: #1b2a47; color: white;">
+                    <div class="page-title">
+                        <h1>Send Message</h1>
+                    </div>
+                </div>
+            </div>
+        </div>';
+
 		$output.='
 		<div class="col-lg-2"></div>
 			<div class="col-lg-8">
-                <div class="card">
+                <div class="card" style="background: #1b2a47; color: white;">
                 
-                    <div class="card-body">
+                    <div class="card-body" style="background: #1b2a47; color: white;">
                         <div class="stat-widget-one">
                             <div class="stat-content">
                               <div class="stat-text"><h4>Send Message To Student</h4></div><br>
@@ -47,7 +57,7 @@
 
 	if(isset($_POST['to'])){
 
-		$name = $_SESSION['name'];
+		$name = $_SESSION['staffNo'];
 		$matric = $_POST['to'];
 		$subject = $_POST['subject'];
 		$msgbox = $_POST['msgbox'];
@@ -71,8 +81,8 @@
               </div>
 			';
 			}else{
-				$sql2 = "INSERT INTO messages (admin_username, student_matricno, title, message, status, timesent)
-						VALUES('$name', '$matric', '$subject', '$msgbox', '0', '$timesent')";
+				$sql2 = "INSERT INTO messages (sender, title, message, status, timesent)
+						VALUES('$name', '$subject', '$msgbox', '0', '$timesent')";
 				$query2 = $connection->query($sql2);
 				if($query2){
 					echo '
